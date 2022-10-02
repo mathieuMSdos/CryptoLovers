@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setList } from "../feature/list.slice";
 import TableLine from "./TableLine";
 import ToTop from "./ToTop";
 
@@ -49,8 +50,9 @@ const Table = ({ coinsData }) => {
     }
   };
 
-  // reduxtoolkit part 
-  const showStable = useSelector((state)=> state.showStable.showStable)
+  // reduxtoolkit part
+  const showStable = useSelector((state) => state.showStable.showStable);
+  const showList = useSelector((state) => state.list.list);
 
   return (
     <div className="table-container">
@@ -101,11 +103,21 @@ const Table = ({ coinsData }) => {
         coinsData
           .slice(0, rangeNumber)
           .filter((coin) => {
-            if(showStable) {
-              return coin
-            } else {
-              if(excludeCoin(coin.symbol)) {
+            if(showList) {
+             let favList = window.localStorage.coinList.split(",")
+              if(favList.includes(coin.id)) {
                 return coin
+              } 
+            } else {
+              return coin
+            }
+          })
+          .filter((coin) => {
+            if (showStable) {
+              return coin;
+            } else {
+              if (excludeCoin(coin.symbol)) {
+                return coin;
               }
             }
           })
@@ -191,7 +203,6 @@ const Table = ({ coinsData }) => {
                 return a.ath_change_percentage - b.ath_change_percentage;
 
               default:
-    
             }
           })
           .map((coin, index) => (

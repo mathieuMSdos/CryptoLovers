@@ -3,16 +3,20 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setShowStable } from "../feature/showStable.slice";
+import { setList } from "../feature/list.slice.js";
+import Search from "./Search";
 
 const TableFilters = () => {
   const [toggleShowStable, setToggleShowStable] = useState(true);
+  const [showFavList, setShowFavList] = useState(false);
 
   // Redux toolKit part
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(setShowStable(toggleShowStable));
-  }, [toggleShowStable]);
+    dispatch(setList(showFavList));
+  }, [toggleShowStable, showFavList]);
 
   return (
     <div className="table-filters">
@@ -27,16 +31,19 @@ const TableFilters = () => {
             }}
           ></input>
           <label htmlFor="stableCoin">
-            {toggleShowStable ? "Hide stablecoins" : "Show stablecoins"}
+            {toggleShowStable ? "Masquer stablecoins" : "Montrer stablecoins"}
           </label>
-          <div className="no-list-btn">
-            <p>Aucune liste</p>
-          </div>
         </div>
-        <div className="fav-list">
+        <div
+          className={showFavList ? "fav-list active" : "fav-list"}
+          onClick={() => setShowFavList(!showFavList)}
+        >
           <p>Liste des favoris</p>
           <img src="./assets/star-full.svg" alt="" />
         </div>
+      </div>
+      <div className="searchBar">
+        <Search></Search>
       </div>
     </div>
   );
