@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const showSearchSlice = createSlice({
   name: "showSearch",
   initialState: {
-    showSearch: "",
+    showSearch: false,
   },
   reducers: {
     setShowSearchRedux: (state, { payload }) => {

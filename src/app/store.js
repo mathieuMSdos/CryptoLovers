@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import showStableReducer from "../feature/showStable.slice";
-import listReducer from "../feature/list.slice";
+import showFavListReducer from "../feature/showFavList.slice"
 import searchReducer from "../feature/search.slice"
 import showsearchReducer from "../feature/showSearch.slice "
 
 export default configureStore({
   reducer: {
     showStable: showStableReducer,
-    list: listReducer,
+    showFavList: showFavListReducer,
     search: searchReducer,
     showSearch: showsearchReducer,
   },

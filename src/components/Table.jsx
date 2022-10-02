@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setList } from "../feature/list.slice";
+import { setShowFavList } from "../feature/showFavList.slice.js";
 import TableLine from "./TableLine";
 import ToTop from "./ToTop";
 
@@ -52,7 +52,7 @@ const Table = ({ coinsData }) => {
 
   // reduxtoolkit part
   const showStable = useSelector((state) => state.showStable.showStable);
-  const showList = useSelector((state) => state.list.list);
+  const showFavList = useSelector((state) => state.showFavList.showFavList);
   const search = useSelector((state) => state.search.search);
   const showSearch = useSelector((state) => state.showSearch.showSearch);
 
@@ -60,7 +60,7 @@ const Table = ({ coinsData }) => {
     <div className="table-container">
       <ul className="table-header">
         <div className="range-container">
-          {showSearch || showList ? (
+          {showSearch || showFavList ? (
             ""
           ) : (
             <>
@@ -121,7 +121,7 @@ const Table = ({ coinsData }) => {
             }
           })
           .filter((coin) => {
-            if (showList) {
+            if (showFavList) {
               let favList = window.localStorage.coinList.split(",");
               if (favList.includes(coin.id)) {
                 return coin;

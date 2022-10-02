@@ -1,22 +1,30 @@
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setShowStable } from "../feature/showStable.slice";
-import { setList } from "../feature/list.slice.js";
+import { setShowSearchRedux } from "../feature/showSearch.slice ";
+import { setShowFavList } from "../feature/showFavList.slice.js";
 import Search from "./Search";
 
 const TableFilters = () => {
   const [toggleShowStable, setToggleShowStable] = useState(true);
-  const [showFavList, setShowFavList] = useState(false);
+  const [showFavListState, setShowFavListState] = useState(false);
+  const showSearchRedux = useSelector((state) => state.showSearch.showSearch);
+  const showFavList = useSelector((state) => state.showFavList.showFavList);
+  const [showSearch, setShowSearch] = useState(showSearchRedux);
+
 
   // Redux toolKit part
   const dispatch = useDispatch();
 
+
+
   useEffect(() => {
     dispatch(setShowStable(toggleShowStable));
-    dispatch(setList(showFavList));
-  }, [toggleShowStable, showFavList]);
+    dispatch(setShowFavList(showFavListState));
+    dispatch(setShowSearchRedux(false))
+  }, [toggleShowStable, showFavListState]);
 
   return (
     <div className="table-filters">
@@ -36,7 +44,7 @@ const TableFilters = () => {
         </div>
         <div
           className={showFavList ? "fav-list active" : "fav-list"}
-          onClick={() => setShowFavList(!showFavList)}
+          onClick={() => setShowFavListState(!showFavListState)}
         >
           <p>Liste des favoris</p>
           <img src="./assets/star-full.svg" alt="" />
