@@ -53,29 +53,38 @@ const Table = ({ coinsData }) => {
   // reduxtoolkit part
   const showStable = useSelector((state) => state.showStable.showStable);
   const showList = useSelector((state) => state.list.list);
+  const search = useSelector((state) => state.search.search);
+  const showSearch = useSelector((state) => state.showSearch.showSearch);
 
   return (
     <div className="table-container">
       <ul className="table-header">
         <div className="range-container">
-          <span>
-            Top{" "}
-            <input
-              ref={selectedRange}
-              type="text"
-              value={rangeNumber}
-              onChange={() => setRangeNumber(selectedRange.current.value)}
-            />
-          </span>
+          {showSearch || showList ? (
+            ""
+          ) : (
+            <>
+              <span>
+                Top{" "}
+                <input
+                  ref={selectedRange}
+                  type="text"
+                  value={rangeNumber}
+                  onChange={() => setRangeNumber(selectedRange.current.value)}
+                />
+              </span>
 
-          <input
-            ref={selectedRange}
-            type="range"
-            min={1}
-            max={250}
-            value={rangeNumber}
-            onChange={() => setRangeNumber(selectedRange.current.value)}
-          />
+              <input
+                ref={selectedRange}
+                type="range"
+                min={1}
+                max={250}
+                value={rangeNumber}
+                onChange={() => setRangeNumber(selectedRange.current.value)}
+              />
+            </>
+          )}
+
           <ToTop />
         </div>
         {tableHeader.map((item) => (
@@ -103,13 +112,22 @@ const Table = ({ coinsData }) => {
         coinsData
           .slice(0, rangeNumber)
           .filter((coin) => {
-            if(showList) {
-             let favList = window.localStorage.coinList.split(",")
-              if(favList.includes(coin.id)) {
-                return coin
-              } 
+            if (showSearch) {
+              if (search === coin.id || search === coin.symbol) {
+                return coin;
+              }
             } else {
-              return coin
+              return coin;
+            }
+          })
+          .filter((coin) => {
+            if (showList) {
+              let favList = window.localStorage.coinList.split(",");
+              if (favList.includes(coin.id)) {
+                return coin;
+              }
+            } else {
+              return coin;
             }
           })
           .filter((coin) => {
