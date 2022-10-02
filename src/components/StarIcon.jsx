@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import {setCoinsFavName} from "../feature/coinsFavName.slice"
 
 const StarIcon = ({ coinId }) => {
+
   const [like, setLike] = useState(false);
 
   useEffect(() => {
@@ -11,6 +14,7 @@ const StarIcon = ({ coinId }) => {
       }
     }
   }, []);
+
 
   const idChecker = (id) => {
     let favList = null;
@@ -33,9 +37,18 @@ const StarIcon = ({ coinId }) => {
     }
   };
 
+    // redux toolkit part 
+    const dispatch = useDispatch()
+    useEffect(() => {
+      let favList = window.localStorage.coinList.split(",")
+      dispatch(setCoinsFavName(favList))
+    },[window.localStorage.coinList])
+
   return (
     <img
-      onClick={() => idChecker(coinId)}
+      onClick={() => 
+        idChecker(coinId)
+      }
       src={like ? "./assets/star-full.svg" : "./assets/star-empty.svg"}
       alt="icon-star"
     />
