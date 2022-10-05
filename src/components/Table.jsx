@@ -55,6 +55,7 @@ const Table = ({ coinsData }) => {
   const showFavList = useSelector((state) => state.showFavList.showFavList);
   const search = useSelector((state) => state.search.search);
   const showSearch = useSelector((state) => state.showSearch.showSearch);
+  const coinsFavName = useSelector((state) => state.coinsFavName.coinsFavName)
 
   return (
     <div className="table-container">
@@ -112,9 +113,12 @@ const Table = ({ coinsData }) => {
         coinsData
           .slice(0, rangeNumber)
           .filter((coin) => {
+
             if (showSearch) {
-              if (search === coin.id || search === coin.symbol) {
+              if (search === coin.id || search === coin.symbol || search === coin.name) {
                 return coin;
+              } else {
+                
               }
             } else {
               return coin;
@@ -122,7 +126,7 @@ const Table = ({ coinsData }) => {
           })
           .filter((coin) => {
             if (showFavList) {
-              let favList = window.localStorage.coinList.split(",");
+              let favList = coinsFavName;
               if (favList.includes(coin.id)) {
                 return coin;
               }

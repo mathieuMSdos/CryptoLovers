@@ -4,7 +4,7 @@
   width: 660px;
   top: 17px;
   left: 8px;
-  background: rgba(82, 82, 82, 0.8);
+  background: rgba($backColorNoTransparency, $alpha: 0.9);
   backdrop-filter: blur(3px);
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.548);
@@ -58,7 +58,7 @@
 
       text {
         fill: $white1;
-        font-size: 0.9rem;
+        font-size: 0.7rem;
       }
       .recharts-tooltip-wrapper {
         color: $color1;

@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { Tooltip, Treemap } from "recharts";
 import colors from "../styles/_settings.scss";
 
+
 const HeatMap = ({ coinsData }) => {
   const [dataArray, setDataArray] = useState([]);
+  const [width, setWidth] = useState(window.innerWidth);
 
   const colorPicker = (number) => {
     if (number >= 20) {
@@ -81,17 +83,25 @@ const HeatMap = ({ coinsData }) => {
     }
   };
 
+  // Allow heatmap to have reponsive with.
+
+  useEffect(() => {
+    window.addEventListener("resize", () => setWidth(window.innerWidth));
+  }, []);
+
+
+
   return (
     <div className="global-chart">
       <Treemap
-        width={730}
-        height={181}
+        width={width - 500}
+        height={150}
         data={dataArray}
         dataKey="size"
         stroke="white"
-        fill="grey"
+        fill="transparent"
         aspectRatio={1}
-        animationDuration={500}
+        animationDuration={200}
       >
         <Tooltip content={<TreemapToolTip />} />
       </Treemap>

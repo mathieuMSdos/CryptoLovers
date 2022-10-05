@@ -1,0 +1,23 @@
+.global-chart {
+  margin-top:2rem;
+  display: flex;
+  justify-content: center;
+  // border-radius: 14px;
+  overflow: hidden;
+  box-shadow: $shadow;
+
+  text {
+    font-size: 0.8rem !important;
+    letter-spacing: 1px;
+    text-shadow: 0px 0px 5px rgba(255, 0, 251, 0.381);
+  }
+  .custom-tooltip {
+    background: rgba($dataBackcolor, $alpha: 0.8);
+    color: $mainData;
+    padding: 10px;
+    font-size: 0.8rem;
+    border-radius: 7px;
+    text-shadow: 0px 0px 5px rgba(255, 0, 251, 0.381);
+    box-shadow: 0px 0px 5px rgba(18, 13, 24, 0.381);
+  }
+}

@@ -1,7 +1,10 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import PercentChange from "./PercentChange";
-import TableFilters from "./TableFilters";
+import { useDispatch, useSelector } from "react-redux";
+import { setShowFavList } from "../feature/showFavList.slice.js";
+import { setShowSearchRedux } from "../feature/showSearch.slice ";
+
 
 const HeaderInfos = () => {
   const [headerData, setHeaderData] = useState([]);
@@ -12,44 +15,72 @@ const HeaderInfos = () => {
       .then((res) => setHeaderData(res.data.data));
   }, []);
 
+  // Redux toolkit part 
+  const dispatch = useDispatch()
+  const showFavList = useSelector((state) => state.showFavList.showFavList);
+  const showSearch = useSelector((state) => state.showSearch.showSearch);
+
+  const resetAllViews = () => {
+    dispatch(setShowFavList(false))
+    dispatch(setShowSearchRedux(false))
+  }
+
   return (
     <div className="header-container">
-      <ul className="title">
+      <div className="brand" onClick={() => resetAllViews()}>
+        {/* pour l'image on doit faire comme ci elle est dans le dossier public. */}
+        <img src="./assets/logo.svg" alt="logo" />
+
+        <h1>CryptoLuv</h1>
+      </div>
+      <ul className="market-infos">
         <li>
-          {/* pour l'image on doit faire comme ci elle est dans le dossier public. */}
-          <h1>
-            <img src="./assets/logo.png" alt="logo" />
-            CryptoLovers
-          </h1>
+          Cryptos:
+          <p>
+            {headerData.active_cryptocurrencies &&
+              headerData.active_cryptocurrencies.toLocaleString()}
+          </p>
         </li>
         <li>
-          Crypto-monnaie :{" "}
-          {headerData.active_cryptocurrencies &&
-            headerData.active_cryptocurrencies.toLocaleString()}
+          Exchanges:
+          <p>{headerData.markets && headerData.markets.toLocaleString()}</p>
         </li>
+
         <li>
-          Marchés : {headerData.markets && headerData.markets.toLocaleString()}
+          {/* problem with api. Datas are not send all in same time. This length check avoid app to crash */}
+          {headerData.length !== 0 ? (
+            <>
+              {" "}
+              Market Cap:{" "}
+              <p>${headerData.total_market_cap.usd.toLocaleString()}</p>
+            </>
+          ) : (
+            ""
+          )}
         </li>
-      </ul>
-      <ul className="infos-mkt">
+
         <li className="global-mkt">
-          Global Market Cap :{" "}
+          Market Cap Change(24h):{" "}
           <PercentChange
             percent={headerData.market_cap_change_percentage_24h_usd}
           />
         </li>
         <li>
-          BTC dominance :{" "}
-          {headerData.market_cap_percentage &&
-            headerData.market_cap_percentage.btc.toFixed(1) + "%"}{" "}
+          Dominance BTC:{" "}
+          <p>
+            {headerData.market_cap_percentage &&
+              headerData.market_cap_percentage.btc.toFixed(1) + "%"}
+          </p>
         </li>
         <li>
-          ETH dominance :{" "}
-          {headerData.market_cap_percentage &&
-            headerData.market_cap_percentage.eth.toFixed(1) + "%"}{" "}
+          Dominance ETH :
+          <p>
+            {headerData.market_cap_percentage &&
+              headerData.market_cap_percentage.eth.toFixed(1) + "%"}
+          </p>
         </li>
       </ul>
-      <TableFilters />
+
     </div>
   );
 };

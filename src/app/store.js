@@ -3,6 +3,8 @@ import showStableReducer from "../feature/showStable.slice";
 import showFavListReducer from "../feature/showFavList.slice"
 import searchReducer from "../feature/search.slice"
 import showsearchReducer from "../feature/showSearch.slice "
+import coinsFavNameReducer from "../feature/coinsFavName.slice"
+
 
 export default configureStore({
   reducer: {
@@ -10,5 +12,6 @@ export default configureStore({
     showFavList: showFavListReducer,
     search: searchReducer,
     showSearch: showsearchReducer,
+    coinsFavName: coinsFavNameReducer,
   },
 });
