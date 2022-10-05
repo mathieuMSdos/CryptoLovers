@@ -31,24 +31,32 @@ const TableFilters = () => {
           <h3>Filters</h3>
         </div>
 
-        <div className="stable-checkbox-container">
-          <input
-            type="checkbox"
-            id="stableCoin"
-            defaultChecked={false}
-            onChange={() => {
+        <div className="filter-checkbox-container">
+          <div
+            className="stable-coin-filter"
+            onClick={() => {
               setToggleShowStable(!toggleShowStable);
             }}
-          ></input>
-          <label htmlFor="stableCoin">
-            {toggleShowStable ? "Hide stablecoins" : "Show stablecoins"}
-          </label>
+          >
+            {toggleShowStable ? (
+              <img src="./assets/square-check.svg" alt=""></img>
+            ) : (
+              <img src="./assets/square-empty.svg" alt=""></img>
+            )}
+            <p>show stablecoins</p>
+          </div>
+
           <div
-            className={showFavList ? "fav-list active" : "fav-list"}
+            className="fav-list"
             onClick={() => setShowFavListState(!showFavListState)}
           >
+            {showFavListState ? (
+              <img src="./assets/square-check.svg" alt=""></img>
+            ) : (
+              <img src="./assets/square-empty.svg" alt=""></img>
+            )}
             <p>Liste des favoris</p>
-            <img src="./assets/star-full.svg" alt="" />
+            <img id="star-icon" src="./assets/star-full.svg" alt="" />
           </div>
         </div>
       </div>
