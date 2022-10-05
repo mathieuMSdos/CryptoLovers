@@ -6,6 +6,7 @@ import Table from "./components/Table";
 import ToTop from "./components/ToTop";
 import TableFilters from "./components/TableFilters";
 import Search from "./components/Search";
+import FearAndGreed from "./components/FearAndGreed";
 
 const App = () => {
   const [coinsData, setCoinsData] = useState([]);
@@ -32,6 +33,7 @@ const App = () => {
   return (
     <div className="app-container">
       <header>
+
         <HeaderInfos />
         <HeatMap coinsData={coinsData} />
 
