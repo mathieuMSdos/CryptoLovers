@@ -5,6 +5,8 @@
   // border-radius: 14px;
   overflow: hidden;
   box-shadow: $shadow;
+  @include back-shadow-light;
+
 
   text {
     font-size: 0.8rem !important;

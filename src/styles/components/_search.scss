@@ -5,7 +5,6 @@
   align-items: center;
   // background-color: yellow;
 
-
   form {
     display: flex;
     justify-content: left;
@@ -19,9 +18,7 @@
       padding: 0px 20px;
       border-radius: 16px;
       background: rgba(150, 151, 226, 0.18);
-      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.379);
-      backdrop-filter: blur(6.5px);
-      -webkit-backdrop-filter: blur(6.5px);
+      @include back-shadow-light;
       border: solid 1.9px $borderColor;
       background: rgb(17, 14, 38);
       background: linear-gradient(

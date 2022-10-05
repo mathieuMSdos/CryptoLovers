@@ -46,6 +46,18 @@ $backgroundComponentColor: #9697e22e;
   borderColor: $borderColor
 }
 
+// mixin part : 
+@mixin hover-light {
+  text-shadow: 0px 0px 15px #ff5afcdc;
+
+}
+
+@mixin back-shadow-light {
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.379);
+  backdrop-filter: blur(6.5px);
+  -webkit-backdrop-filter: blur(6.5px);
+}
+
 * {
   margin: 0;
   padding: 0;

@@ -56,7 +56,7 @@ const TableFilters = () => {
               <img src="./assets/square-empty.svg" alt=""></img>
             )}
             <p>Liste des favoris</p>
-            <img id="star-icon" src="./assets/star-full.svg" alt="" />
+            <img id="star-icon" src="./assets/star-full-white.svg" alt="" />
           </div>
         </div>
       </div>
