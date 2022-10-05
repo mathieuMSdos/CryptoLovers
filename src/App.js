@@ -33,7 +33,6 @@ const App = () => {
   return (
     <div className="app-container">
       <header>
-
         <HeaderInfos />
         <HeatMap coinsData={coinsData} />
 

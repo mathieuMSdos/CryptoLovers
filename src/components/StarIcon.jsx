@@ -39,10 +39,10 @@ const StarIcon = ({ coinId }) => {
 
     // redux toolkit part 
     const dispatch = useDispatch()
-    useEffect(() => {
-      let favList = window.localStorage.coinList.split(",")
-      dispatch(setCoinsFavName(favList))
-    },[window.localStorage.coinList])
+    // useEffect(() => {
+    //   let favList = window.localStorage.coinList.split(",")
+    //   dispatch(setCoinsFavName(favList))
+    // },[window.localStorage.coinList])
 
   return (
     <img
