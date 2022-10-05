@@ -26,6 +26,11 @@ const Search = () => {
     form.current.reset();
   };
 
+  const quitSearch = () => {
+    form.current.reset();
+
+  }
+
   //   ReduxToolkit part
   const dispatch = useDispatch();
 
@@ -34,20 +39,23 @@ const Search = () => {
     dispatch(setShowSearchRedux(showSearch));
   }, [userResearch, showSearch]);
 
+
+
   return (
     <>
-      <form ref={form} onSubmit={search}>
+      <form ref={form} onSubmit={search} onBlur={quitSearch} >
         <input
-          type="text"
-          placeholder="Rechercher une crypto"
+        className="searchInput"
+          type="search"
+          placeholder="       Search by name or symbol + press Enter!"
           ref={contentResearch}
         />
       </form>
-      <div className="cancelResearch">
+      {/* <div className="cancelResearch">
         <div className="btn-cancel-search" onClick={() => setShowSearch(false)}>
           Annuler la recherche
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

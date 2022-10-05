@@ -1,18 +1,39 @@
-@import url("https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500&display=swap");
+@font-face {
+  font-family: "main-regular";
+  src: url(../assets/fonts/Averta_Cyrillic_Regular.otf);
+}
 
-$font1: "Saira Condensed", sans-serif;
-$font2: "Baloo Bhaina 2", cursive;
-$color1: #00b7b3;
-$green2: rgb(0, 253, 148);
-$green1: rgb(2, 172, 81);
-$red1: rgb(255, 111, 86);
-$red2: rgb(251, 69, 63);
+@font-face {
+  font-family: "main-bold";
+  src: url(../assets/fonts/Averta_Cyrillic_Bold.otf);
+}
+
+@font-face {
+  font-family: "main-semi-bold";
+  src: url(../assets/fonts/Averta_Cyrillic_SemiBold.otf);
+}
+
+$main-regular: "main-regular";
+$main-bold: "main-bold";
+$main-semi-bold: "main-semi-bold";
+
+$color1: #744bcd;
+$green2: #71f96a;
+$green1: #59e16d;
+$red1: #f66d66;
+$red2: #b03024;
 $white1: rgb(219, 217, 217);
 $white2: rgb(172, 172, 172);
-$black1: rgb(31, 31, 31);
+$black1: rgba(31, 31, 31, 0.817);
 $black2: rgb(10, 10, 10);
 $shadow: 0 5px 15px rgba(0, 0, 0, 0.322);
+$mainData: #8455ec;
+$borderColor: #63508a;
+$bodyColor: #110e26;
+$selectedColor: #4d3877;
+$noSelectedColor: #5f5378;
+$titleBackgroundcolor: #4d3877;
+$backgroundComponentColor: #9697e22e;
 
 :export {
   color1: $color1;
@@ -22,6 +43,7 @@ $shadow: 0 5px 15px rgba(0, 0, 0, 0.322);
   red2: $red2;
   black1: $black1;
   white1: $white1;
+  borderColor: $borderColor
 }
 
 * {
@@ -35,9 +57,10 @@ html {
 }
 
 body {
-  background: url(../assets/wave.svg) center/cover;
+  background: #110e26;
+  background: linear-gradient(98deg, #110e26 8%, rgba(12, 12, 32, 1) 100%);
   background-size: 2000%;
-  font-family: $font1;
+  font-family: $main-regular;
   color: $white1;
   max-width: 1200px;
   margin: 0 auto;

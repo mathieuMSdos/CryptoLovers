@@ -14,44 +14,43 @@ const TableFilters = () => {
   const showFavList = useSelector((state) => state.showFavList.showFavList);
   const [showSearch, setShowSearch] = useState(showSearchRedux);
 
+  // Redux toolKit partactive
 
-  // Redux toolKit part
   const dispatch = useDispatch();
-
-
 
   useEffect(() => {
     dispatch(setShowStable(toggleShowStable));
     dispatch(setShowFavList(showFavListState));
-    dispatch(setShowSearchRedux(false))
+    dispatch(setShowSearchRedux(false));
   }, [toggleShowStable, showFavListState]);
 
   return (
     <div className="table-filters">
       <div className="table-filters-container">
+        <div className="title-container">
+          <h3>Filters</h3>
+        </div>
+
         <div className="stable-checkbox-container">
           <input
             type="checkbox"
             id="stableCoin"
-            defaultChecked={true}
+            defaultChecked={false}
             onChange={() => {
               setToggleShowStable(!toggleShowStable);
             }}
           ></input>
           <label htmlFor="stableCoin">
-            {toggleShowStable ? "Masquer stablecoins" : "Montrer stablecoins"}
+            {toggleShowStable ? "Hide stablecoins" : "Show stablecoins"}
           </label>
+          <div
+            className={showFavList ? "fav-list active" : "fav-list"}
+            onClick={() => setShowFavListState(!showFavListState)}
+          >
+            <p>Liste des favoris</p>
+            <img src="./assets/star-full.svg" alt="" />
+          </div>
         </div>
-        <div
-          className={showFavList ? "fav-list active" : "fav-list"}
-          onClick={() => setShowFavListState(!showFavListState)}
-        >
-          <p>Liste des favoris</p>
-          <img src="./assets/star-full.svg" alt="" />
-        </div>
-      </div>
-      <div className="searchBar">
-        <Search></Search>
       </div>
     </div>
   );

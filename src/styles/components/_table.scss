@@ -1,6 +1,8 @@
 .table-container {
   text-align: center;
   color: $white1 !important;
+  font-size: 0.8rem;
+  margin-top: 1rem;
 
   .table-header,
   .table-line {
@@ -67,12 +69,12 @@
     span {
       input {
         width: 30px;
-        font-family: $font1;
+        font-family: $main-semi-bold;
         background: none;
         border: none;
         outline: none;
         color: white;
-        font-size: 1.05rem;
+        font-size: 1rem;
         color: $white1;
       }
     }
@@ -155,7 +157,7 @@
     transition: 0.15s;
 
     @media screen and (max-width: 1020px) {
-      font-size: 0.8rem;
+      font-size: 0.6rem;
     }
 
     @media screen and (max-width: 850px) {
@@ -243,7 +245,6 @@
         span {
           color: $white2;
           margin: 3px 2px 0 5px;
-          font-size: 0.9rem;
 
           @media screen and (max-width: 715px) {
             display: none;
