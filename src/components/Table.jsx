@@ -113,9 +113,12 @@ const Table = ({ coinsData }) => {
         coinsData
           .slice(0, rangeNumber)
           .filter((coin) => {
+
             if (showSearch) {
               if (search === coin.id || search === coin.symbol || search === coin.name) {
                 return coin;
+              } else {
+                
               }
             } else {
               return coin;

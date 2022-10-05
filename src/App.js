@@ -21,7 +21,7 @@ const App = () => {
   useEffect(() => {
     // navbar qui apparaît au scroll
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 300) {
+      if (window.scrollY > 400) {
         document.querySelector(".table-header").classList.add("active");
       } else {
         document.querySelector(".table-header").classList.remove("active");

@@ -26,14 +26,15 @@
     height: 44px;
     align-items: center;
     width: 100%;
-    z-index: 100000;
+    z-index: 10;
     transition: 0;
+    background-color: $backgroundComponentColor;
 
     &.active {
       position: fixed;
       max-width: 1200px;
       top: 0;
-      background: rgba(52, 52, 52, 0.8);
+      background-color: rgba($backColorNoTransparency, $alpha: 0.8);
       backdrop-filter: blur(2px);
       opacity: 0;
       top: -10px;
