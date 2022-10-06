@@ -51,11 +51,12 @@ const Table = ({ coinsData }) => {
   };
 
   // reduxtoolkit part
+  const dispatch = useDispatch();
   const showStable = useSelector((state) => state.showStable.showStable);
   const showFavList = useSelector((state) => state.showFavList.showFavList);
   const search = useSelector((state) => state.search.search);
   const showSearch = useSelector((state) => state.showSearch.showSearch);
-  const coinsFavName = useSelector((state) => state.coinsFavName.coinsFavName)
+  const coinsFavName = useSelector((state) => state.coinsFavName.coinsFavName);
 
   return (
     <div className="table-container">
@@ -113,12 +114,14 @@ const Table = ({ coinsData }) => {
         coinsData
           .slice(0, rangeNumber)
           .filter((coin) => {
-
             if (showSearch) {
-              if (search === coin.id || search === coin.symbol || search === coin.name) {
+              if (
+                search === coin.id ||
+                search === coin.symbol ||
+                search === coin.name
+              ) {
                 return coin;
               } else {
-                
               }
             } else {
               return coin;
@@ -230,6 +233,24 @@ const Table = ({ coinsData }) => {
           .map((coin, index) => (
             <TableLine coin={coin} index={index} key={coin.symbol} />
           ))}
+
+      {showFavList && coinsFavName.length <= 0 ? (
+        <div className="message-noFav-container">
+          <div className="content-container">
+            <h3>Ouch! You have no cryptocurrencies in your favorites list!</h3>
+            <p>
+              You can add cryptocurrencies in your favorite list by clicking on{" "}
+              <img
+                src="./assets/star-empty.svg"
+                alt="star-icon"
+                onClick={() => dispatch(setShowFavList(!showFavList))}
+              />
+            </p>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

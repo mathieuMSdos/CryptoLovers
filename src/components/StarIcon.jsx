@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import {setCoinsFavName} from "../feature/coinsFavName.slice"
+import { setCoinsFavName } from "../feature/coinsFavName.slice";
 
 const StarIcon = ({ coinId }) => {
-
   const [like, setLike] = useState(false);
-  const [listFavState, setListFavState] = useState([])
+  const [listFavState, setListFavState] = useState([]);
 
   useEffect(() => {
     if (window.localStorage.coinList) {
@@ -15,7 +14,6 @@ const StarIcon = ({ coinId }) => {
       }
     }
   }, []);
-
 
   const idChecker = (id) => {
     let favList = [];
@@ -38,22 +36,21 @@ const StarIcon = ({ coinId }) => {
     }
   };
 
-    // redux toolkit part 
-    const dispatch = useDispatch()
+  // redux toolkit part
+  const dispatch = useDispatch();
 
-    useEffect(() => {
-      if (window.localStorage.coinList) {
-        let favList = window.localStorage.coinList.split(",")
-        dispatch(setCoinsFavName(favList))
-      }
-
-    },[window.localStorage.coinList])
+  useEffect(() => {
+    if (window.localStorage.coinList) {
+      let favList = window.localStorage.coinList.split(",");
+      dispatch(setCoinsFavName(favList));
+    } else {
+      dispatch(setCoinsFavName([]));
+    }
+  }, [window.localStorage.coinList]);
 
   return (
     <img
-      onClick={() => 
-        idChecker(coinId)
-      }
+      onClick={() => idChecker(coinId)}
       src={like ? "./assets/star-full.svg" : "./assets/star-empty.svg"}
       alt="icon-star"
     />

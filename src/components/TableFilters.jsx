@@ -9,7 +9,6 @@ import Search from "./Search";
 
 const TableFilters = () => {
   const [toggleShowStable, setToggleShowStable] = useState(true);
-  const [showFavListState, setShowFavListState] = useState(false);
   const showSearchRedux = useSelector((state) => state.showSearch.showSearch);
   const showFavList = useSelector((state) => state.showFavList.showFavList);
   const [showSearch, setShowSearch] = useState(showSearchRedux);
@@ -20,9 +19,9 @@ const TableFilters = () => {
 
   useEffect(() => {
     dispatch(setShowStable(toggleShowStable));
-    dispatch(setShowFavList(showFavListState));
+    dispatch(setShowFavList(showFavList));
     dispatch(setShowSearchRedux(false));
-  }, [toggleShowStable, showFavListState]);
+  }, [toggleShowStable, showFavList]);
 
   return (
     <div className="table-filters">
@@ -48,9 +47,9 @@ const TableFilters = () => {
 
           <div
             className="fav-list"
-            onClick={() => setShowFavListState(!showFavListState)}
+            onClick={() => dispatch(setShowFavList(!showFavList))}
           >
-            {showFavListState ? (
+            {showFavList ? (
               <img src="./assets/square-check.svg" alt=""></img>
             ) : (
               <img src="./assets/square-empty.svg" alt=""></img>

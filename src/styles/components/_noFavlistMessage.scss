@@ -1,0 +1,54 @@
+.message-noFav-container {
+  margin-top: 1.7rem;
+  margin-bottom: 4rem;
+  display: flex;
+  justify-content: center;
+
+  .content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    padding: 10px 20px;
+    @include back-shadow-light;
+    border-radius: 7px; //
+    background-color: $backgroundComponentColor;
+
+    h3 {
+      font-family: $main-bold;
+      font-size: 1.4rem;
+    }
+    p {
+      margin-top: 0.6rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1rem;
+
+      img {
+        cursor: pointer;
+        margin-left: 0.3rem;
+        width: 25px;
+
+        &:hover {
+          animation: upDown 1s ease infinite;
+        }
+      }
+    }
+  }
+}
+
+// animations
+@keyframes upDown {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
