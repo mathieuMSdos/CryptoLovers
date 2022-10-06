@@ -5,6 +5,7 @@ import {setCoinsFavName} from "../feature/coinsFavName.slice"
 const StarIcon = ({ coinId }) => {
 
   const [like, setLike] = useState(false);
+  const [listFavState, setListFavState] = useState([])
 
   useEffect(() => {
     if (window.localStorage.coinList) {
@@ -17,7 +18,7 @@ const StarIcon = ({ coinId }) => {
 
 
   const idChecker = (id) => {
-    let favList = null;
+    let favList = [];
 
     if (window.localStorage.coinList) {
       favList = window.localStorage.coinList.split(",");
@@ -39,10 +40,14 @@ const StarIcon = ({ coinId }) => {
 
     // redux toolkit part 
     const dispatch = useDispatch()
-    // useEffect(() => {
-    //   let favList = window.localStorage.coinList.split(",")
-    //   dispatch(setCoinsFavName(favList))
-    // },[window.localStorage.coinList])
+
+    useEffect(() => {
+      if (window.localStorage.coinList) {
+        let favList = window.localStorage.coinList.split(",")
+        dispatch(setCoinsFavName(favList))
+      }
+
+    },[window.localStorage.coinList])
 
   return (
     <img
