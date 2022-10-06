@@ -1,12 +1,14 @@
 import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowFavList } from "../feature/showFavList.slice.js";
+import ButtonApp from "./ButtonApp.jsx";
 import TableLine from "./TableLine";
 import ToTop from "./ToTop";
 
 const Table = ({ coinsData }) => {
   const [rangeNumber, setRangeNumber] = useState(100);
   const [orderBy, setOrderBy] = useState("");
+  const [title, setTitle] = useState("back");
 
   const selectedRange = useRef();
   const tableHeader = [
@@ -237,7 +239,7 @@ const Table = ({ coinsData }) => {
       {showFavList && coinsFavName.length <= 0 ? (
         <div className="message-noFav-container">
           <div className="content-container">
-            <h3>Ouch! You have no cryptocurrencies in your favorites list!</h3>
+            <h3>Ouch! You have no cryptocurrencies in your favorite list!</h3>
             <p>
               You can add cryptocurrencies in your favorite list by clicking on{" "}
               <img
@@ -246,6 +248,10 @@ const Table = ({ coinsData }) => {
                 onClick={() => dispatch(setShowFavList(!showFavList))}
               />
             </p>
+            <ButtonApp
+              title={"back"}
+              actionSet={() => dispatch(setShowFavList(!showFavList))}
+            ></ButtonApp>
           </div>
         </div>
       ) : (

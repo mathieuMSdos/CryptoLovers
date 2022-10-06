@@ -36,6 +36,8 @@ $titleBackgroundcolor: #63508a;
 $backgroundComponentColor: #9697e22e;
 $backColorNoTransparency: #292648;
 $dataBackcolor: #110e26;
+$captionColor: #978cb0;
+$lightNeonColor: #c155ec;
 
 :export {
   color1: $color1;
@@ -55,7 +57,7 @@ $dataBackcolor: #110e26;
 }
 
 @mixin back-shadow-light {
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.297);
+  box-shadow: 0 10px 25px 0px rgba(149, 91, 230, 0.162);
   backdrop-filter: blur(6.5px);
   -webkit-backdrop-filter: blur(6.5px);
 }
