@@ -116,7 +116,6 @@ const Table = ({ coinsData }) => {
           .slice(0, rangeNumber)
           .filter((coin) => {
             if (showSearch) {
-              console.log(typeof coin.id);
               if (
                 coin.id.includes(search.toLowerCase()) ||
                 coin.symbol.includes(search.toLowerCase()) ||
