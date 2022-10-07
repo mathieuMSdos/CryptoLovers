@@ -6,9 +6,8 @@ import TableLine from "./TableLine";
 import ToTop from "./ToTop";
 
 const Table = ({ coinsData }) => {
-  const [rangeNumber, setRangeNumber] = useState(100);
+  const [rangeNumber, setRangeNumber] = useState(250);
   const [orderBy, setOrderBy] = useState("");
-  const [title, setTitle] = useState("back");
 
   const selectedRange = useRef();
   const tableHeader = [

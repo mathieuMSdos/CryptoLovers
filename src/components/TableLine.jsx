@@ -1,7 +1,10 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Coinchart from "./Coinchart";
 import PercentChange from "./PercentChange";
 import StarIcon from "./StarIcon";
+import { setShowCoinChart } from "../feature/showCoinChart.slice";
 
 const TableLine = ({ coin, index }) => {
   const [showChart, setShowChart] = useState(false);
@@ -22,6 +25,15 @@ const TableLine = ({ coin, index }) => {
     return Number(newNum.join(""));
   };
 
+  // Redux toolkit part :
+  const dispatch = useDispatch();
+  const showCoinChart = useSelector(
+    (state) => state.showCoinChart.showCoinChart
+  );
+
+  useEffect(() => {
+    dispatch(setShowCoinChart(showChart));
+  }, [showChart]);
 
   return (
     <div className="table-line">
@@ -37,26 +49,39 @@ const TableLine = ({ coin, index }) => {
             onMouseEnter={() => setShowChart(true)}
             onMouseLeave={() => setShowChart(false)}
           >
-            <img src="./assets/chart-icon.svg" alt="chart-icon" />
+            <img
+              id="chart-icon"
+              src="./assets/chart-icon.svg"
+              alt="chart-icon"
+            />
             <div className="chart-container" id={coin.name}>
               {showChart && <Coinchart coinId={coin.id} coinName={coin.name} />}
             </div>
           </div>
           <h4>{coin.name}</h4>
           <span>- {coin.symbol.toUpperCase()}</span>
-          <a
-            href={
-              "https://www.coingecko.com/fr/pi%C3%A8ces/" +
-              coin.name
-                .toLowerCase()
-                .replace(" ", "-")
-                .replace(" ", "-")
-                .replace(" ", "-")
-                .replace(" ", "-")
-            }
-          >
-            <img src="./assets/info-icon.svg" alt="info-icon" />
-          </a>
+
+          {showCoinChart ? (
+            ""
+          ) : (
+            <a
+              href={
+                "https://www.coingecko.com/fr/pi%C3%A8ces/" +
+                coin.name
+                  .toLowerCase()
+                  .replace(" ", "-")
+                  .replace(" ", "-")
+                  .replace(" ", "-")
+                  .replace(" ", "-")
+              }
+            >
+              <img
+                id="info-icon"
+                src="./assets/info-icon.svg"
+                alt="info-icon"
+              />
+            </a>
+          )}
         </div>
       </div>
       <p>{priceFormater(coin.current_price).toLocaleString()} $</p>
