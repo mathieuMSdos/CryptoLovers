@@ -12,7 +12,6 @@ const Search = () => {
   const [showSearch, setShowSearch] = useState(false);
   const showFavList = useSelector((state) => state.showFavList.showFavList);
 
-
   const form = useRef();
   const contentResearch = useRef("");
 
