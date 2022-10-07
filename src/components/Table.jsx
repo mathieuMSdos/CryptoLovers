@@ -116,7 +116,6 @@ const Table = ({ coinsData }) => {
           .slice(0, rangeNumber)
           .filter((coin) => {
             if (showSearch) {
-              console.log(typeof coin.id);
               if (
                 coin.id.includes(search.toLowerCase()) ||
                 coin.symbol.includes(search.toLowerCase()) ||
@@ -236,6 +235,8 @@ const Table = ({ coinsData }) => {
             <TableLine coin={coin} index={index} key={coin.symbol} />
           ))}
 
+      {/* message if there is no coins in favorite list */}
+
       {showFavList && coinsFavName.length <= 0 ? (
         <div className="message-noFav-container">
           <div className="content-container">
@@ -252,6 +253,8 @@ const Table = ({ coinsData }) => {
               title={"back"}
               actionSet={() => dispatch(setShowFavList(!showFavList))}
             ></ButtonApp>
+
+            {/* message if there is no result after a coin search */}
           </div>
         </div>
       ) : (
