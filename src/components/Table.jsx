@@ -1,11 +1,12 @@
 import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowFavList } from "../feature/showFavList.slice.js";
+import ButtonApp from "./ButtonApp.jsx";
 import TableLine from "./TableLine";
 import ToTop from "./ToTop";
 
 const Table = ({ coinsData }) => {
-  const [rangeNumber, setRangeNumber] = useState(100);
+  const [rangeNumber, setRangeNumber] = useState(250);
   const [orderBy, setOrderBy] = useState("");
 
   const selectedRange = useRef();
@@ -51,11 +52,12 @@ const Table = ({ coinsData }) => {
   };
 
   // reduxtoolkit part
+  const dispatch = useDispatch();
   const showStable = useSelector((state) => state.showStable.showStable);
   const showFavList = useSelector((state) => state.showFavList.showFavList);
   const search = useSelector((state) => state.search.search);
   const showSearch = useSelector((state) => state.showSearch.showSearch);
-  const coinsFavName = useSelector((state) => state.coinsFavName.coinsFavName)
+  const coinsFavName = useSelector((state) => state.coinsFavName.coinsFavName);
 
   return (
     <div className="table-container">
@@ -113,12 +115,15 @@ const Table = ({ coinsData }) => {
         coinsData
           .slice(0, rangeNumber)
           .filter((coin) => {
-
             if (showSearch) {
-              if (search === coin.id || search === coin.symbol || search === coin.name) {
+              console.log(typeof coin.id);
+              if (
+                coin.id.includes(search.toLowerCase()) ||
+                coin.symbol.includes(search.toLowerCase()) ||
+                coin.name.includes(search.toLowerCase())
+              ) {
                 return coin;
               } else {
-                
               }
             } else {
               return coin;
@@ -230,6 +235,28 @@ const Table = ({ coinsData }) => {
           .map((coin, index) => (
             <TableLine coin={coin} index={index} key={coin.symbol} />
           ))}
+
+      {showFavList && coinsFavName.length <= 0 ? (
+        <div className="message-noFav-container">
+          <div className="content-container">
+            <h3>Ouch! You have no cryptocurrencies in your favorite list!</h3>
+            <p>
+              You can add cryptocurrencies in your favorite list by clicking on{" "}
+              <img
+                src="./assets/star-empty.svg"
+                alt="star-icon"
+                onClick={() => dispatch(setShowFavList(!showFavList))}
+              />
+            </p>
+            <ButtonApp
+              title={"back"}
+              actionSet={() => dispatch(setShowFavList(!showFavList))}
+            ></ButtonApp>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

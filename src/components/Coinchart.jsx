@@ -1,19 +1,18 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import {
   AreaChart,
-  CartesianGrid,
-  Tooltip,
   XAxis,
   YAxis,
+  CartesianGrid,
+  Tooltip,
   Area,
 } from "recharts";
 import colors from "../styles/_settings.scss";
 
-const Coinchart = ({ coinId, coinName }) => {
-  const [duration, setDuration] = useState(30);
+const CoinChart = ({ coinId, coinName }) => {
   const [coinData, setCoinData] = useState();
-
+  const [duration, setDuration] = useState(30);
   const headerData = [
     [1, "1 jour"],
     [3, "3 jours"],
@@ -27,6 +26,7 @@ const Coinchart = ({ coinId, coinName }) => {
 
   useEffect(() => {
     let dataArray = [];
+
     axios
       .get(
         `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=usd&days=${duration}${
@@ -34,9 +34,9 @@ const Coinchart = ({ coinId, coinName }) => {
         }`
       )
       .then((res) => {
-        // reformatage des données reçu de l'api pour qu'elles soient exploitable dans Rechart
         for (let i = 0; i < res.data.prices.length; i++) {
           let price = res.data.prices[i][1];
+
           dataArray.push({
             date: new Date(res.data.prices[i][0]).toLocaleDateString(),
             price: price < "50" ? price : parseInt(price),
@@ -46,21 +46,19 @@ const Coinchart = ({ coinId, coinName }) => {
       });
   }, [coinId, duration]);
 
-//   console.log(coinData);
-
   return (
     <div className="coin-chart">
       <p>{coinName}</p>
       <div className="btn-container">
-        {headerData.map((item) => {
+        {headerData.map((radio) => {
           return (
             <div
-              key={item[0]}
-              htmlFor={"btn" + item[0]}
-              onClick={() => setDuration(item[0])}
-              className={item[0] === duration ? "active-btn" : ""}
+              htmlFor={"btn" + radio[0]}
+              onClick={() => setDuration(radio[0])}
+              key={radio[0]}
+              className={radio[0] === duration ? "active-btn" : ""}
             >
-              {item[1]}
+              {radio[1]}
             </div>
           );
         })}
@@ -93,4 +91,4 @@ const Coinchart = ({ coinId, coinName }) => {
   );
 };
 
-export default Coinchart;
+export default CoinChart;
