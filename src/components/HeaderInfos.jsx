@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import PercentChange from "./PercentChange";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowFavList } from "../feature/showFavList.slice.js";
-import { setShowSearchRedux } from "../feature/showSearch.slice ";
+import { setShowSearchRedux } from "../feature/showSearch.slice";
 
 
 const HeaderInfos = () => {

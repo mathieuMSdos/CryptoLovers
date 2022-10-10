@@ -1,6 +1,10 @@
 import React, { useRef, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowFavList } from "../feature/showFavList.slice.js";
+import { setShowSearchRedux } from "../feature/showSearch.slice";
+import { setNoSearchResultRedux } from "../feature/noSearchResultRedux.slice";
+import { setSearch } from "../feature/search.slice";
 import ButtonApp from "./ButtonApp.jsx";
 import TableLine from "./TableLine";
 import ToTop from "./ToTop";
@@ -58,6 +62,41 @@ const Table = ({ coinsData }) => {
   const search = useSelector((state) => state.search.search);
   const showSearch = useSelector((state) => state.showSearch.showSearch);
   const coinsFavName = useSelector((state) => state.coinsFavName.coinsFavName);
+  const noSearchResultRedux = useSelector(
+    (state) => state.noSearchResultRedux.noSearchResultRedux
+  );
+
+  // check if there is no result after a search for a coin. Need it to show "no result message" in case of no result.
+
+  const noSearchResultCheck = () => {
+    if (coinsData) {
+      if (showSearch) {
+        let result = [];
+        coinsData.filter((coin) => {
+          if (
+            coin.id.includes(search.toLowerCase()) ||
+            coin.symbol.includes(search.toLowerCase()) ||
+            coin.name.includes(search.toLowerCase())
+          ) {
+            result.push(coin.name);
+          }
+        });
+        return result.length;
+      }
+    }
+  };
+
+  useEffect(() => {
+    if (showSearch) {
+      if (noSearchResultCheck() <= 0) {
+        // setNoSearchResult(true);
+        dispatch(setNoSearchResultRedux(true));
+      } else {
+        // setNoSearchResult(false);
+        dispatch(setNoSearchResultRedux(false));
+      }
+    }
+  }, [search]);
 
   return (
     <div className="table-container">
@@ -122,7 +161,6 @@ const Table = ({ coinsData }) => {
                 coin.name.includes(search.toLowerCase())
               ) {
                 return coin;
-              } else {
               }
             } else {
               return coin;
@@ -235,10 +273,10 @@ const Table = ({ coinsData }) => {
             <TableLine coin={coin} index={index} key={coin.symbol} />
           ))}
 
-      {/* message if there is no coins in favorite list */}
+      {/* message showed when there is no favorite in favorite list */}
 
       {showFavList && coinsFavName.length <= 0 ? (
-        <div className="message-noFav-container">
+        <div className="message-error-container">
           <div className="content-container">
             <h3>Ouch! You have no cryptocurrencies in your favorite list!</h3>
             <p>
@@ -253,8 +291,28 @@ const Table = ({ coinsData }) => {
               title={"back"}
               actionSet={() => dispatch(setShowFavList(!showFavList))}
             ></ButtonApp>
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
 
-            {/* message if there is no result after a coin search */}
+      {/* message showed when there is no result for a coin search */}
+      {showSearch && noSearchResultRedux ? (
+        <div className="message-error-container">
+          <div className="content-container">
+            <h3>
+              Ouch! <br></br> No cryptocurrencies found!{" "}
+            </h3>
+            <p>Try with another search</p>
+            <ButtonApp
+              title={"back"}
+              actionSet={() => {
+                dispatch(setNoSearchResultRedux(false));
+                dispatch(setSearch(""));
+                dispatch(setShowSearchRedux(false));
+              }}
+            ></ButtonApp>
           </div>
         </div>
       ) : (

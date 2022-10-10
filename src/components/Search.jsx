@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSearch } from "../feature/search.slice";
-import { setShowSearchRedux } from "../feature/showSearch.slice ";
+import { setShowSearchRedux } from "../feature/showSearch.slice";
 import { setShowFavList } from "../feature/showFavList.slice.js";
 
 const Search = () => {

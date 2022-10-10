@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowStable } from "../feature/showStable.slice";
-import { setShowSearchRedux } from "../feature/showSearch.slice ";
+import { setShowSearchRedux } from "../feature/showSearch.slice";
 import { setShowFavList } from "../feature/showFavList.slice.js";
 import Search from "./Search";
 
