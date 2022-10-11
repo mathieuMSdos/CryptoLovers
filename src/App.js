@@ -6,7 +6,6 @@ import Table from "./components/Table";
 import ToTop from "./components/ToTop";
 import TableFilters from "./components/TableFilters";
 import Search from "./components/Search";
-import FearAndGreed from "./components/FearAndGreed";
 import ButtonApp from "./components/ButtonApp";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowSearchRedux } from "./feature/showSearch.slice";

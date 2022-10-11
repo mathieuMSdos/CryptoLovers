@@ -9,7 +9,6 @@ import { setSearch } from "../feature/search.slice";
 
 const TableFilters = () => {
   const [toggleShowStable, setToggleShowStable] = useState(true);
-  const showSearchRedux = useSelector((state) => state.showSearch.showSearch);
   const showFavList = useSelector((state) => state.showFavList.showFavList);
 
   // Redux toolKit partactive
@@ -36,8 +35,6 @@ const TableFilters = () => {
             onClick={() => {
               setToggleShowStable(!toggleShowStable);
               dispatch(setShowStable(toggleShowStable));
-              dispatch(setShowFavList(true));
-              dispatch(setShowSearchRedux(false));
             }}
           >
             {toggleShowStable ? (
@@ -50,7 +47,10 @@ const TableFilters = () => {
 
           <div
             className="fav-list"
-            onClick={() => dispatch(setShowFavList(!showFavList))}
+            onClick={() => {
+              dispatch(setShowFavList(!showFavList));
+              dispatch(setShowSearchRedux(false));
+            }}
           >
             {showFavList ? (
               <img src="./assets/square-check.svg" alt=""></img>
