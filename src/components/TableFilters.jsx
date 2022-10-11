@@ -5,13 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { setShowStable } from "../feature/showStable.slice";
 import { setShowSearchRedux } from "../feature/showSearch.slice";
 import { setShowFavList } from "../feature/showFavList.slice.js";
-import Search from "./Search";
+import { setSearch } from "../feature/search.slice";
 
 const TableFilters = () => {
   const [toggleShowStable, setToggleShowStable] = useState(true);
   const showSearchRedux = useSelector((state) => state.showSearch.showSearch);
   const showFavList = useSelector((state) => state.showFavList.showFavList);
-  const [showSearch, setShowSearch] = useState(showSearchRedux);
 
   // Redux toolKit partactive
 
@@ -19,8 +18,9 @@ const TableFilters = () => {
 
   useEffect(() => {
     dispatch(setShowStable(toggleShowStable));
-    dispatch(setShowFavList(showFavList));
+    dispatch(setSearch(""));
     dispatch(setShowSearchRedux(false));
+    dispatch(setShowFavList(showFavList));
   }, [toggleShowStable, showFavList]);
 
   return (
@@ -35,6 +35,9 @@ const TableFilters = () => {
             className="stable-coin-filter"
             onClick={() => {
               setToggleShowStable(!toggleShowStable);
+              dispatch(setShowStable(toggleShowStable));
+              dispatch(setShowFavList(true));
+              dispatch(setShowSearchRedux(false));
             }}
           >
             {toggleShowStable ? (

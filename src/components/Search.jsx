@@ -17,8 +17,9 @@ const Search = () => {
 
   const search = (e) => {
     e.preventDefault();
-    setUserResearch(contentResearch.current.value);
-    setShowSearch(true);
+    dispatch(setSearch(""));
+    dispatch(setSearch(contentResearch.current.value));
+    dispatch(setShowSearchRedux(true));
     // disable favlist view in case of user are already on favlist views and want to do a search
     dispatch(setShowFavList(false));
 
@@ -33,12 +34,6 @@ const Search = () => {
   //   ReduxToolkit part
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(setSearch(userResearch));
-    dispatch(setShowSearchRedux(showSearch));
-  }, [userResearch, showSearch]);
-
-
 
   return (
     <>
@@ -50,11 +45,7 @@ const Search = () => {
           ref={contentResearch}
         />
       </form>
-      {/* <div className="cancelResearch">
-        <div className="btn-cancel-search" onClick={() => setShowSearch(false)}>
-          Annuler la recherche
-        </div>
-      </div> */}
+    
     </>
   );
 };
