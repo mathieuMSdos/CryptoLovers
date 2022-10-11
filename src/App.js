@@ -55,7 +55,8 @@ const App = () => {
             <Search></Search>
             {/* show a button back in case of research has results  */}
 
-            {(showSearch && !noSearchResultRedux) || showFavList ? (
+            {(showSearch && !noSearchResultRedux) ||
+            (showFavList && window.localStorage.coinList) ? (
               <ButtonApp
                 title={"back to list"}
                 actionSet={() => {

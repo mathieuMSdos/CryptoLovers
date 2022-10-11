@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setShowFavList } from "../feature/showFavList.slice.js";
 import { setShowSearchRedux } from "../feature/showSearch.slice";
 
-
 const HeaderInfos = () => {
   const [headerData, setHeaderData] = useState([]);
 
@@ -15,15 +14,15 @@ const HeaderInfos = () => {
       .then((res) => setHeaderData(res.data.data));
   }, []);
 
-  // Redux toolkit part 
-  const dispatch = useDispatch()
+  // Redux toolkit part
+  const dispatch = useDispatch();
   const showFavList = useSelector((state) => state.showFavList.showFavList);
   const showSearch = useSelector((state) => state.showSearch.showSearch);
 
   const resetAllViews = () => {
-    dispatch(setShowFavList(false))
-    dispatch(setShowSearchRedux(false))
-  }
+    dispatch(setShowFavList(false));
+    dispatch(setShowSearchRedux(false));
+  };
 
   return (
     <div className="header-container">
@@ -80,7 +79,6 @@ const HeaderInfos = () => {
           </p>
         </li>
       </ul>
-
     </div>
   );
 };
