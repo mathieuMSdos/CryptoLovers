@@ -18,10 +18,11 @@ $main-bold: "main-bold";
 $main-semi-bold: "main-semi-bold";
 
 $color1: #744bcd;
-$green2: #71f96a;
-$green1: #59e16d;
-$red1: #f66d66;
-$red2: #b03024;
+$green2: #afea7b;
+$green1: #79ed79;
+$red1: #f66c65;
+$red2: #f4473e;
+$yellow1: #f5c264;
 $white1: rgb(219, 217, 217);
 $white2: rgb(172, 172, 172);
 $black1: rgba(31, 31, 31, 0.817);
@@ -39,6 +40,11 @@ $backColorNoTransparency: #292648;
 $dataBackcolor: #110e26;
 $captionColor: #978cb0;
 $lightNeonColor: #c155ec;
+$fearAndGreedExFear: #AE3780;
+$fearAndGreedFear: #D54482;
+$fearAndGreedNeutral: #FF76A6;
+$fearAndGreedGreedy: #FF9DCB;
+$fearAndGreedTooGreedy: #FFC7E9;
 
 :export {
   color1: $color1;
@@ -46,9 +52,16 @@ $lightNeonColor: #c155ec;
   green1: $green1;
   red1: $red1;
   red2: $red2;
+  yellow1: $yellow1;
   black1: $black1;
   white1: $white1;
   borderColor: $borderColor;
+  mainData: $mainData;
+  fearAndGreedExFear: $fearAndGreedExFear;
+  fearAndGreedFear: $fearAndGreedFear;
+  fearAndGreedNeutral: $fearAndGreedNeutral;
+  fearAndGreedGreedy: $fearAndGreedGreedy;
+  fearAndGreedTooGreedy: $fearAndGreedTooGreedy;
 }
 
 // mixin part :

@@ -12,9 +12,12 @@ import { setShowSearchRedux } from "./feature/showSearch.slice";
 import { setSearch } from "./feature/search.slice";
 import { setNoSearchResultRedux } from "./feature/noSearchResultRedux.slice";
 import { setShowFavList } from "./feature/showFavList.slice.js";
+import { setWindowWidth } from "./feature/windowWidth.slice";
+import FearAndGreed from "./components/FearAndGreed";
 
 const App = () => {
   const [coinsData, setCoinsData] = useState([]);
+  const [fearAndGreedData, setFearAndGreedData] = useState();
 
   useEffect(() => {
     axios
@@ -35,6 +38,21 @@ const App = () => {
     });
   }, []);
 
+  useEffect(() => {
+    axios
+      .get("https://api.alternative.me/fng/?limit=1")
+      .then((res) => setFearAndGreedData(res.data.data[0].value));
+    // setFearAndGreedData(88)
+  }, []);
+
+  // Allow heatmap + crypto Fear index to have reponsive with.
+
+  useEffect(() => {
+    window.addEventListener("resize", () =>
+      dispatch(setWindowWidth(window.innerWidth))
+    );
+  }, []);
+
   // Redux toolkit part :
   const dispatch = useDispatch();
   const showSearch = useSelector((state) => state.showSearch.showSearch);
@@ -47,7 +65,14 @@ const App = () => {
     <div className="app-container">
       <header>
         <HeaderInfos />
-        <HeatMap coinsData={coinsData} />
+        <div className="data-container">
+          <div className="heatmap-container">
+            <HeatMap coinsData={coinsData} />
+          </div>
+          <div className="fear-and-greed-container">
+            <FearAndGreed fearAndGreedData={fearAndGreedData}></FearAndGreed>
+          </div>
+        </div>
 
         <div className="handle-block">
           <div className="searchBar">

@@ -5,7 +5,8 @@ import searchReducer from "../feature/search.slice";
 import showsearchReducer from "../feature/showSearch.slice";
 import coinsFavNameReducer from "../feature/coinsFavName.slice";
 import showCoinChartReducer from "../feature/showCoinChart.slice";
-import noSearchResultReduxReducer from "../feature/noSearchResultRedux.slice"
+import noSearchResultReduxReducer from "../feature/noSearchResultRedux.slice" 
+import windowWidthReducer from "../feature/windowWidth.slice" 
 
 export default configureStore({
   reducer: {
@@ -16,5 +17,6 @@ export default configureStore({
     coinsFavName: coinsFavNameReducer,
     showCoinChart: showCoinChartReducer,
     noSearchResultRedux: noSearchResultReduxReducer,
+    windowWidth: windowWidthReducer,
   },
 });

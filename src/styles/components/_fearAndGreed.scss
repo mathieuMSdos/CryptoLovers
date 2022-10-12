@@ -1,5 +1,29 @@
-.fearAndGreed-container {
-    h1{
-        color: red;
-    }
+.fear-and-greed-container {
+  width: 35%;
+  height: 180px;
+  padding: 15px 0px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  border-radius: 7px;
+  @include back-shadow-light;
+
+  background-color: $backColorNoTransparency;
+
+  .text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    border-radius: 7px;
+    padding: 15px;
+    height: 100%;
+    @include hover-light;
+
+  }
+
+  .fear-and-greed-index {
+    width: 50%;
+    height: 150px;
+    // margin: 0 -20px;
+  }
 }
