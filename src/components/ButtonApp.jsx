@@ -4,7 +4,7 @@ const ButtonApp = ({ title, actionSet }) => {
   const backFunction = () => {
     setTimeout(() => {
       actionSet();
-    }, 300);
+    }, 250);
   };
 
   return (

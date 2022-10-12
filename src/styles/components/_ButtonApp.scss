@@ -16,16 +16,13 @@
     rgba(119, 92, 172, 1) 0%,
     rgba(99, 80, 138, 1) 97%
   );
-  color: $white1 ;
+  color: $white1;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   @include back-shadow-light;
   transition: 0.4s ease-in-out;
-
-  &:hover {
-    animation: upDown 1s ease infinite;
-  }
+  animation: upDown 1s ease infinite;
 
   &:after {
     content: "";
