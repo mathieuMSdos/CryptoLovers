@@ -1,4 +1,4 @@
-.data-container {
+.charts-container {
   width: 100%;
   display: flex;
   column-gap: 1rem;
@@ -8,8 +8,8 @@
   padding: 2rem 1rem;
 }
 
-@media screen and (max-width: 860px) {
-  .data-container {
+@media screen and (max-width: 1040px) {
+  .charts-container {
     flex-direction: column;
     row-gap: 1rem;
   }

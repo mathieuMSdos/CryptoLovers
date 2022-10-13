@@ -65,7 +65,7 @@ const App = () => {
     <div className="app-container">
       <header>
         <Header />
-        <div className="data-container">
+        <div className="charts-container">
           <div className="heatmap-container">
             <HeatMap coinsData={coinsData} />
           </div>

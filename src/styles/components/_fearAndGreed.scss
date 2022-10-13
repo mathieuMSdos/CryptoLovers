@@ -18,6 +18,7 @@
     padding: 15px;
     height: 100%;
     @include hover-light;
+
   }
 
   .fear-and-greed-index {
@@ -28,9 +29,10 @@
   }
 }
 
-@media screen and (max-width: 820px) {
+@media screen and (max-width: 1040px) {
   .fear-and-greed-container {
-    width: 50%;
+    min-width: 380px;
+    width: 40%;
     justify-content: center;
 
     .fear-and-greed-index {
