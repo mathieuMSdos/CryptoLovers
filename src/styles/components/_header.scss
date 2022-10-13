@@ -3,7 +3,7 @@ header {
   margin-top: 1rem;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: left;
   flex-direction: column;
 
   .header-container {
@@ -26,6 +26,7 @@ header {
     }
 
     .market-infos {
+      height: 40px;
       margin-top: 1rem;
       display: flex;
       justify-content: space-between;
@@ -33,11 +34,10 @@ header {
       column-gap: 15px;
       padding: 10px 20px;
       font-size: 0.8rem;
-      background: $backgroundComponentColor;
       @include back-shadow-light;
-
       border-radius: 7px;
       // border: 1px solid rgba(255, 255, 255, 0.18);
+      background-color: $backgroundComponentColor;
 
       li {
         display: flex;
@@ -54,5 +54,13 @@ header {
     .global-mkt {
       display: flex;
     }
+  }
+}
+
+@media screen and (max-width: 1003px) {
+  .market-infos {
+    // overflow-y: hidden;
+    // overflow-x: auto;
+    height: 200px;
   }
 }

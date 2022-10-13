@@ -60,8 +60,8 @@ const FearAndGreed = ({ fearAndGreedData }) => {
           value={fearAndGreedData}
           fluidWidth={true}
           needleTransition={Transition.easeElastic}
-          needleHeightRatio={0.65}
-          ringWidth={33}
+          needleHeightRatio={0.75}
+          ringWidth={35}
           textColor={"#ffffff"}
           valueTextFontWeight={"regular"}
           needleColor={colors.mainData}
