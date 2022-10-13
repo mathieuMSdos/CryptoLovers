@@ -1,9 +1,9 @@
 .fear-and-greed-container {
-  width: 35%;
-  height: 180px;
-  padding: 15px 0px;
+  width: 47%;
+  // height: 180px;
+  padding: 15px 10px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   border-radius: 7px;
   @include back-shadow-light;
@@ -22,8 +22,22 @@
   }
 
   .fear-and-greed-index {
-    width: 50%;
+    display: flex;
+    width: 70%;
     height: 150px;
     // margin: 0 -20px;
+  }
+}
+
+@media screen and (max-width: 1040px) {
+  .fear-and-greed-container {
+    min-width: 380px;
+    width: 40%;
+    justify-content: center;
+
+    .fear-and-greed-index {
+      display: flex;
+      width: 90%;
+    }
   }
 }

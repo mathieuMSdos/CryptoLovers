@@ -3,12 +3,11 @@ header {
   margin-top: 1rem;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: left;
   flex-direction: column;
 
   .header-container {
     width: 100%;
-
     .brand {
       cursor: pointer;
       width: fit-content;
@@ -26,6 +25,7 @@ header {
     }
 
     .market-infos {
+      height: fit-content;
       margin-top: 1rem;
       display: flex;
       justify-content: space-between;
@@ -33,16 +33,14 @@ header {
       column-gap: 15px;
       padding: 10px 20px;
       font-size: 0.8rem;
-      background: $backgroundComponentColor;
       @include back-shadow-light;
-
       border-radius: 7px;
-      // border: 1px solid rgba(255, 255, 255, 0.18);
+      background-color: $backColorNoTransparency;
 
       li {
         display: flex;
-        align-items: center;
         column-gap: 3px;
+        white-space: nowrap; //for break line on your text!!!
 
         p {
           color: $mainData;
@@ -51,8 +49,14 @@ header {
       }
     }
 
-    .global-mkt {
-      display: flex;
+    @media screen and (max-width: 987px) {
+      .market-infos {
+        overflow-y: none;
+        overflow-x: auto;
+      }
+      .market-infos::-webkit-scrollbar {
+        display: none;
+      }
     }
   }
 }

@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import HeaderInfos from "./components/HeaderInfos";
+import Header from "./components/Header";
 import HeatMap from "./components/HeatMap";
 import Table from "./components/Table";
 import ToTop from "./components/ToTop";
@@ -64,8 +64,8 @@ const App = () => {
   return (
     <div className="app-container">
       <header>
-        <HeaderInfos />
-        <div className="data-container">
+        <Header />
+        <div className="charts-container">
           <div className="heatmap-container">
             <HeatMap coinsData={coinsData} />
           </div>
