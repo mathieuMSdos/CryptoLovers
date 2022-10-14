@@ -88,7 +88,7 @@ const HeatMap = ({ coinsData }) => {
   return (
     <div className="global-chart">
       <Treemap
-        width={(windowWidth <= 1484) ? windowWidth * (50 / 100) : 750}
+        width={400}
         height={150}
         data={dataArray}
         dataKey="size"
