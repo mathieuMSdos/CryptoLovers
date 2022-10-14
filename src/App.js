@@ -43,12 +43,17 @@ const App = () => {
     // setFearAndGreedData(88)
   }, []);
 
-  // Allow heatmap + crypto Fear index to have reponsive with.
+  // Allow heatmap + crypto Fear index to have reponsive width.
 
   useEffect(() => {
     window.addEventListener("resize", () =>
       dispatch(setWindowWidth(window.innerWidth))
     );
+    return () => {
+      window.removeEventListener("resize", () =>
+        dispatch(setWindowWidth(window.innerWidth))
+      );
+    };
   }, []);
 
   return (
@@ -56,12 +61,12 @@ const App = () => {
       <header>
         <Header />
         <div className="charts-container">
-          {/* <div className="heatmap-container">
+          <div className="heatmap-container">
             <HeatMap coinsData={coinsData} />
-          </div> */}
-          {/* <div className="fear-and-greed-container">
+          </div>
+          <div className="fear-and-greed-container">
             <FearAndGreed fearAndGreedData={fearAndGreedData}></FearAndGreed>
-          </div> */}
+          </div>
         </div>
 
         <div className="handle-block">
