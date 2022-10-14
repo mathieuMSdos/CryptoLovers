@@ -124,9 +124,9 @@ const Table = ({ coinsData }) => {
                 value={rangeNumber}
                 onChange={() => setRangeNumber(selectedRange.current.value)}
               />
+              <ToTop />
             </>
           )}
-          <ToTop />
         </div>
         {tableHeader.map((item) => (
           <li key={item}>
@@ -279,12 +279,8 @@ const Table = ({ coinsData }) => {
           <div className="content-container">
             <h3>Ouch! You have no cryptocurrencies in your favorite list!</h3>
             <p>
-              You can add cryptocurrencies in your favorite list by clicking on{" "}
-              <img
-                src="./assets/star-empty.svg"
-                alt="star-icon"
-                onClick={() => dispatch(setShowFavList(!showFavList))}
-              />
+              You can add cryptocurrencies in your favorite list by clicking on
+              ☆
             </p>
             <ButtonApp
               title={"back"}

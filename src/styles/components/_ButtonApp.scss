@@ -23,6 +23,7 @@
   @include back-shadow-light;
   transition: 0.4s ease-in-out;
   animation: upDown 1s ease infinite;
+  
 
   &:after {
     content: "";
