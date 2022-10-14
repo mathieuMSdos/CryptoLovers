@@ -71,7 +71,7 @@ $fearAndGreedTooGreedy: #FFC7E9;
 
 @mixin back-shadow-light {
   box-shadow: 0 10px 25px 0px rgba(112, 91, 230, 0.162);
-  backdrop-filter: blur(6.5px);
+  backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(6.5px);
 }
 
@@ -108,28 +108,28 @@ label {
   user-select: none;
 }
 
-// .top {
-//   margin: 10px auto 30px;
-//   text-align: center;
-//   animation: animLogo 1.2s infinite linear;
-//   user-select: none;
+.top {
+  margin: 10px auto 30px;
+  text-align: center;
+  animation: animLogo 1.2s infinite linear;
+  user-select: none;
 
-//   img {
-//     height: 22px;
-//     transition: transform 0.4s;
-//     cursor: pointer;
+  img {
+    height: 22px;
+    transition: transform 0.4s;
+    cursor: pointer;
 
-//     &:hover {
-//       transform: scale(1.3);
-//     }
-//   }
+    &:hover {
+      transform: scale(1.3);
+    }
+  }
 
-//   @keyframes animLogo {
-//     50% {
-//       transform: translateY(3px);
-//     }
-//     100% {
-//       transform: translate(0);
-//     }
-//   }
-// }
+  @keyframes animLogo {
+    50% {
+      transform: translateY(3px);
+    }
+    100% {
+      transform: translate(0);
+    }
+  }
+}
