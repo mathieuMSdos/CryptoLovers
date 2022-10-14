@@ -55,13 +55,12 @@
 
 @media screen and (max-width: 987px) {
   .searchBar {
-    width: 90%;
-    flex-direction: row;
+    width: 95vw;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
 
     form {
-      width: 100%;
-
       input[type="search"] {
         width: 100%;
       }

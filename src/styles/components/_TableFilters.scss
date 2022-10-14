@@ -50,6 +50,7 @@
 
     .fav-list {
       cursor: pointer;
+      width: fit-content;
       display: flex;
       align-items: center;
       column-gap: 0.4rem;
@@ -70,8 +71,7 @@
 }
 
 @media screen and (max-width: 987px) {
-  .table-filters-container {
-
-
+  .table-filters {
+    width: 95vw;
   }
 }
