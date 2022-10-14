@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import PercentChange from "./PercentChange";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setShowFavList } from "../feature/showFavList.slice.js";
 import { setShowSearchRedux } from "../feature/showSearch.slice";
 
@@ -16,8 +16,7 @@ const HeaderInfos = () => {
 
   // Redux toolkit part
   const dispatch = useDispatch();
-  const showFavList = useSelector((state) => state.showFavList.showFavList);
-  const showSearch = useSelector((state) => state.showSearch.showSearch);
+
 
   const resetAllViews = () => {
     dispatch(setShowFavList(false));
