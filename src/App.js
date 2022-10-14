@@ -56,12 +56,12 @@ const App = () => {
       <header>
         <Header />
         <div className="charts-container">
-          <div className="heatmap-container">
+          {/* <div className="heatmap-container">
             <HeatMap coinsData={coinsData} />
-          </div>
-          <div className="fear-and-greed-container">
+          </div> */}
+          {/* <div className="fear-and-greed-container">
             <FearAndGreed fearAndGreedData={fearAndGreedData}></FearAndGreed>
-          </div>
+          </div> */}
         </div>
 
         <div className="handle-block">
