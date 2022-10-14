@@ -126,7 +126,6 @@ const Table = ({ coinsData }) => {
               />
             </>
           )}
-
           <ToTop />
         </div>
         {tableHeader.map((item) => (
