@@ -19,11 +19,11 @@ const Table = ({ coinsData }) => {
     "Marketcap",
     "Volume",
     "1h",
-    "1j",
-    "1s",
+    "1d",
+    "1w",
     "1m",
     "6m",
-    "1a",
+    "1y",
     "ATH",
   ];
 
