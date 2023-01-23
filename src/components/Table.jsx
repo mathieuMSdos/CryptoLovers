@@ -186,7 +186,7 @@ const Table = ({ coinsData }) => {
           })
           .sort((a, b) => {
             switch (orderBy) {
-              case "Prix":
+              case "Price":
                 return b.current_price - a.current_price;
               case "Volume":
                 return b.total_volume - a.total_volume;
