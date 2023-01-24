@@ -15,7 +15,7 @@ const Table = ({ coinsData }) => {
 
   const selectedRange = useRef();
   const tableHeader = [
-    "Prix",
+    "Price",
     "Marketcap",
     "Volume",
     "1h",
@@ -186,7 +186,7 @@ const Table = ({ coinsData }) => {
           })
           .sort((a, b) => {
             switch (orderBy) {
-              case "Price":
+              case "Prix":
                 return b.current_price - a.current_price;
               case "Volume":
                 return b.total_volume - a.total_volume;
